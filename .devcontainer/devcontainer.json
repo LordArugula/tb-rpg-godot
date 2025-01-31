@@ -1,0 +1,19 @@
+{
+	"name": "linux-godot-container",
+	"image": "mcr.microsoft.com/devcontainers/base:jammy",
+	"features": {
+		"ghcr.io/devcontainers/features/desktop-lite:1": {},
+		"ghcr.io/lordarugula/codespace-features/godot:latest": {
+			"godotDotnet": false
+		}
+	},
+	
+	"forwardPorts": [6080],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"geequlim.godot-tools"
+			]
+		}
+	}
+}
