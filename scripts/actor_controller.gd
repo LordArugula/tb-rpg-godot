@@ -2,6 +2,6 @@ extends Node3D;
 
 class_name ActorController;
 
-var stats = {
-
+@export
+var stats: Dictionary[String, float] = {
 };

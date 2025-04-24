@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cqcysic4rjbu8"]
 
 [ext_resource type="PackedScene" uid="uid://bstbupk84d55" path="res://scenes/environment.tscn" id="1_rchuw"]
-[ext_resource type="Script" path="res://scripts/battle_manager.gd" id="2_wsbfn"]
+[ext_resource type="Script" uid="uid://djxf0bx482oy3" path="res://scripts/battle_manager.gd" id="2_wsbfn"]
 [ext_resource type="PackedScene" uid="uid://dgcsda3cijeif" path="res://scenes/character_a.tscn" id="3_4dikk"]
 [ext_resource type="PackedScene" uid="uid://uka01qjj1jym" path="res://scenes/character_b.tscn" id="4_k6v5f"]
 
