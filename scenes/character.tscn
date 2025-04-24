@@ -1,22 +1,23 @@
 [gd_scene load_steps=4 format=3 uid="uid://c1u2hxwl6r15i"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k2dil"]
-albedo_color = Color(1, 1, 0.2, 1)
+[ext_resource type="Script" path="res://scripts/actor_controller.gd" id="1_l3wu8"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_nxphr"]
-material = SubResource("StandardMaterial3D_k2dil")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vxapb"]
 
-[node name="Character" type="CharacterBody3D"]
+[node name="ActorController" type="Node3D"]
+script = ExtResource("1_l3wu8")
 
-[node name="Pivot" type="Node3D" parent="."]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+
+[node name="Pivot" type="Node3D" parent="CharacterBody3D"]
 transform = Transform3D(-0.258819, -0.965926, 0, 0.965926, -0.258819, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/Pivot"]
 transform = Transform3D(-0.258819, 0.965926, 0, -0.965926, -0.258819, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_nxphr")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 shape = SubResource("CapsuleShape3D_vxapb")

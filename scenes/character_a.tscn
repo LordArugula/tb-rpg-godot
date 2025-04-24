@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgcsda3cijeif"]
+
+[ext_resource type="PackedScene" uid="uid://c1u2hxwl6r15i" path="res://scenes/character.tscn" id="1_j2cp4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_odekq"]
+albedo_color = Color(1, 1, 0.215686, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_rdqci"]
+material = SubResource("StandardMaterial3D_odekq")
+
+[node name="ActorController" instance=ExtResource("1_j2cp4")]
+
+[node name="MeshInstance3D" parent="CharacterBody3D/Pivot" index="0"]
+mesh = SubResource("CapsuleMesh_rdqci")
