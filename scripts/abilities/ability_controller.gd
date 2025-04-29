@@ -5,7 +5,7 @@ class_name AbilityController;
 var effects: Array[AbilityEffect];
 
 func _ready():
-	effects.assign(get_children().filter(func (child): return child is AbilityEffect));
+	effects.assign(get_children().filter(func(child): return child is AbilityEffect));
 	
 	pass
 

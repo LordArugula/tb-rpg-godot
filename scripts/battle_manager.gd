@@ -37,7 +37,7 @@ func _input(event: InputEvent) -> void:
 		elif (event.keycode == KEY_SPACE):
 			var character = turnQueue.get_current();
 			
-			var targets = turnQueue.characters.filter(func (actor): return actor != character);
+			var targets = turnQueue.characters.filter(func(actor): return actor != character);
 			var target = targets.pick_random();
 			character.targets_selected.emit([target]);
 			pass

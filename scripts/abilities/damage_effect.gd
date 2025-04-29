@@ -1,13 +1,16 @@
 extends AbilityEffect;
 
-func start(actor: ActorController, targets: Array[ActorController]):
+@export
+var amount: float;
+
+func start(_actor: ActorController, _targets: Array[ActorController]):
 	pass
 
 
 func apply(actor: ActorController, targets: Array[ActorController]):
-	print("%s dealt %s to %s." % [actor, 10, targets]);
+	print("%s dealt %d to %s." % [actor, floorf(amount), targets]);
 	pass
 
 
-func resolve(actor: ActorController, targets: Array[ActorController]):
+func resolve(_actor: ActorController, _targets: Array[ActorController]):
 	pass

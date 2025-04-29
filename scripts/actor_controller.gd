@@ -8,6 +8,9 @@ var stats: Dictionary[String, float] = {
 
 var abilities: Array[AbilityController];
 
+@onready
+var animation_player = $AnimationPlayer;
+
 func _ready():
 	abilities.assign(get_children().filter(func(child): return child is AbilityController));
 	
@@ -40,6 +43,14 @@ func activate_ability(ability: AbilityController, targets: Array[ActorController
 	ability.apply(self, targets);
 	ability.resolve(self, targets);
 
+	pass
+
+
+func play_animation(animation: StringName):
+	if (animation.is_empty()):
+		return;
+
+	animation_player.play(animation);
 	pass
 
 
