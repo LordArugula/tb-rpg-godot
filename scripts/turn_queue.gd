@@ -29,5 +29,5 @@ func remove(character: ActorController):
 	pass
 
 
-func get_next() -> ActorController:
+func get_current() -> ActorController:
 	return characters[current];

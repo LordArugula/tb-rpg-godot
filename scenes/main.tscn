@@ -19,8 +19,17 @@ transform = Transform3D(1, 0, 0, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, 
 script = ExtResource("2_wsbfn")
 
 [node name="Character A" parent="BattleManager" instance=ExtResource("3_4dikk")]
-script = null
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.5, 0)
+stats = Dictionary[String, float]({
+"attack": 10.0,
+"defense": 10.0,
+"health": 100.0
+})
 
 [node name="Character B" parent="BattleManager" instance=ExtResource("4_k6v5f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
-script = null
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.5, 0)
+stats = Dictionary[String, float]({
+"attack": 10.0,
+"defense": 10.0,
+"health": 100.0
+})

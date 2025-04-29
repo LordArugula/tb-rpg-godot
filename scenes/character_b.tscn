@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://uka01qjj1jym"]
+[gd_scene load_steps=6 format=3 uid="uid://uka01qjj1jym"]
 
 [ext_resource type="PackedScene" uid="uid://c1u2hxwl6r15i" path="res://scenes/character.tscn" id="1_g3mik"]
+[ext_resource type="Script" uid="uid://vcny821ran3" path="res://scripts/abilities/ability_controller.gd" id="2_2ben8"]
+[ext_resource type="Script" uid="uid://dohwmvk8edwkg" path="res://scripts/abilities/damage_effect.gd" id="3_8t7fw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dxpkv"]
 albedo_color = Color(1, 0.215686, 1, 1)
@@ -12,3 +14,10 @@ material = SubResource("StandardMaterial3D_dxpkv")
 
 [node name="MeshInstance3D" parent="CharacterBody3D/Pivot" index="0"]
 mesh = SubResource("CapsuleMesh_nnuga")
+
+[node name="AbilityController" type="Node" parent="." index="1"]
+script = ExtResource("2_2ben8")
+
+[node name="DamageEffect" type="Node" parent="AbilityController" index="0"]
+script = ExtResource("3_8t7fw")
+metadata/_custom_type_script = "uid://dohwmvk8edwkg"
