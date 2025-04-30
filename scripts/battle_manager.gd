@@ -30,8 +30,8 @@ func _input(event: InputEvent) -> void:
 			var index = event.keycode - KEY_1;
 			var character = turnQueue.get_current();
 
-			if (index >= 0 and index < character.abilities.size()):
-				character.ability_selected.emit(character.abilities[index]);
+			if (index >= 0 and index < character.abilities.count):
+				character.ability_selected.emit(character.abilities.get_at(index));
 				pass
 			pass
 		elif (event.keycode == KEY_SPACE):

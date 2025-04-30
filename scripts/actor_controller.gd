@@ -2,20 +2,14 @@ extends Node3D;
 
 class_name ActorController;
 
-@export
-var stats: Dictionary[String, float] = {
-};
-
-var abilities: Array[AbilityController];
+@onready
+var abilities: AbilitySet = $AbilitySet;
 
 @onready
-var animation_player = $AnimationPlayer;
+var stats: StatSet = $StatSet;
 
-func _ready():
-	abilities.assign(get_children().filter(func(child): return child is AbilityController));
-	
-	pass
-
+@onready
+var animation_player: AnimationPlayer = $AnimationPlayer;
 
 func start_turn():
 	turn_started.emit(self);

@@ -4,7 +4,8 @@
 	"features": {
 		"ghcr.io/devcontainers/features/desktop-lite:1": {},
 		"ghcr.io/lordarugula/codespace-features/godot:latest": {
-			"godotDotnet": false
+			"godotDotnet": false,
+			"godotVersion": "4.4.1-stable"
 		}
 	},
 	
