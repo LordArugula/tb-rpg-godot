@@ -5,7 +5,6 @@ class_name StatController;
 @export
 var base_value: float;
 
-@export
 var value: float;
 
 var modifiers: Array[StatModifier];
@@ -18,6 +17,7 @@ func _ready():
 
 
 func compute():
+    value = base_value;
     for modifier in modifiers:
         value = modifier.modify(base_value, value);
         pass

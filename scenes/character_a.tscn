@@ -16,10 +16,10 @@ material = SubResource("StandardMaterial3D_odekq")
 [node name="MeshInstance3D" parent="CharacterBody3D/Pivot" index="0"]
 mesh = SubResource("CapsuleMesh_rdqci")
 
-[node name="AbilityController" type="Node" parent="AbilitySet" index="0"]
+[node name="Attack" type="Node" parent="AbilitySet" index="0"]
 script = ExtResource("2_woyp2")
 
-[node name="DamageEffect" type="Node" parent="AbilitySet/AbilityController" index="0"]
+[node name="DamageEffect" type="Node" parent="AbilitySet/Attack" index="0"]
 script = ExtResource("3_br84i")
 amount = 10.0
 metadata/_custom_type_script = "uid://dohwmvk8edwkg"
