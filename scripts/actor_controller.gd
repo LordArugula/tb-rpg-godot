@@ -57,10 +57,20 @@ func take_damage(amount: float):
 	pass
 
 
+func take_healing(amount: float):
+	var health = stats.get_stat(&"Health");
+	stats.set_stat(&"Health", health.value + amount);
+
+	healing_taken.emit(self, amount);
+
+	pass
+
+
 signal turn_started(actor: ActorController);
 signal turn_ended(actor: ActorController);
 
 signal damage_taken(actor: ActorController, amount: float);
+signal healing_taken(actor: ActorController, amount: float);
 
 signal ability_selected(ability: AbilityController);
 signal targets_selected(targets: Array[ActorController]);

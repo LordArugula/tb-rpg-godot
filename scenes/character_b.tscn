@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://uka01qjj1jym"]
+[gd_scene load_steps=8 format=3 uid="uid://uka01qjj1jym"]
 
 [ext_resource type="PackedScene" uid="uid://c1u2hxwl6r15i" path="res://scenes/character.tscn" id="1_g3mik"]
 [ext_resource type="Script" uid="uid://vcny821ran3" path="res://scripts/abilities/ability_controller.gd" id="2_2ben8"]
-[ext_resource type="Script" uid="uid://dohwmvk8edwkg" path="res://scripts/abilities/damage_effect.gd" id="3_8t7fw"]
+[ext_resource type="Script" uid="uid://dohwmvk8edwkg" path="res://scripts/abilities/effects/damage_effect.gd" id="3_8t7fw"]
 [ext_resource type="Script" uid="uid://c8dtxa5dpbjkh" path="res://scripts/stats/stat_controller.gd" id="4_8t7fw"]
+[ext_resource type="Script" uid="uid://j8er6obunt7a" path="res://scripts/abilities/effects/heal_effect.gd" id="4_lbo0s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dxpkv"]
 albedo_color = Color(1, 0.215686, 1, 1)
@@ -23,6 +24,15 @@ script = ExtResource("2_2ben8")
 script = ExtResource("3_8t7fw")
 amount = 10.0
 metadata/_custom_type_script = "uid://dohwmvk8edwkg"
+
+[node name="Heal" type="Node" parent="AbilitySet" index="1"]
+script = ExtResource("2_2ben8")
+metadata/_custom_type_script = "uid://vcny821ran3"
+
+[node name="AbilityEffect" type="Node" parent="AbilitySet/Heal" index="0"]
+script = ExtResource("4_lbo0s")
+amount = 10.0
+metadata/_custom_type_script = "uid://dhsvcrrywnjwu"
 
 [node name="Health" type="Node" parent="StatSet" index="0"]
 script = ExtResource("4_8t7fw")
