@@ -2,6 +2,6 @@ extends Node;
 
 class_name StatModifier;
 
-func modify(base_value: float, current_value: float) -> float:
-    pusherr("Function not implemented.");
-    pass
+func modify(_base_value: float, _current_value: float) -> float:
+    push_error("Function not implemented.");
+    return 0;
