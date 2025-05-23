@@ -1,33 +1,33 @@
 class_name TurnQueue;
 
-var characters: Array[ActorController];
+var actors: Array[ActorController];
 var current: int;
 
 
 func move_next():
-	current = (current + 1) % characters.size();
+	current = (current + 1) % actors.size();
 	pass
 
 
 func move_prev():
-	current = (current + characters.size() - 1) % characters.size();
+	current = (current + actors.size() - 1) % actors.size();
 	pass
 
 
-func add_end(character: ActorController):
-	characters.push_back(character);
+func add_end(actor: ActorController):
+	actors.push_back(actor);
 	pass
 
 
-func add_back(character: ActorController):
-	characters.push_front(character);
+func add_back(actor: ActorController):
+	actors.push_front(actor);
 	pass
 
 
-func remove(character: ActorController):
-	characters.erase(character);
+func remove(actor: ActorController):
+	actors.erase(actor);
 	pass
 
 
 func get_current() -> ActorController:
-	return characters[current];
+	return actors[current];

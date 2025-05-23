@@ -4,6 +4,9 @@ class_name AbilityController;
 
 var effects: Array[AbilityEffect];
 
+@onready
+var target_controller: AbilityTargetController = $AbilityTargetController;
+
 func _ready():
 	effects.assign(get_children().filter(func(child): return child is AbilityEffect));
 	

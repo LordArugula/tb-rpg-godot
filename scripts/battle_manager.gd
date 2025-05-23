@@ -11,34 +11,38 @@ func _ready() -> void:
 		pass
 
 	while (true):
-		var character = turnQueue.get_current();
-		print("%s started their turn." % character.name);
-		character.start_turn();
+		var actor = turnQueue.get_current();
+		print("%s started their turn." % actor.name);
+		actor.start_turn();
 
-		await character.turn_ended;
-		print("%s ended their turn." % character.name);
+		await actor.turn_ended;
+		print("%s ended their turn." % actor.name);
 
 		turnQueue.move_next();
 		pass
 
 	pass
 
-
 func _input(event: InputEvent) -> void:
 	if (event is InputEventKey and event.is_pressed()):
 		if (event.keycode >= KEY_1 and event.keycode < KEY_9):
 			var index = event.keycode - KEY_1;
-			var character = turnQueue.get_current();
+			var actor = turnQueue.get_current();
 
-			if (index >= 0 and index < character.abilities.count):
-				character.ability_selected.emit(character.abilities.get_at(index));
-				pass
-			pass
-		elif (event.keycode == KEY_SPACE):
-			var character = turnQueue.get_current();
-			
-			var targets = turnQueue.characters.filter(func(actor): return actor != character);
-			var target = targets.pick_random();
-			character.targets_selected.emit([target]);
-			pass
+			if actor.current_ability == null:
+				if (index >= 0 and index < actor.abilities.count):
+					var ability = actor.abilities.get_at(index);
+					actor.ability_selected.emit(ability);
+					
+					var targets = await ability_targets_selected;
+					actor.targets_selected.emit(targets);
+					pass
+			else:			
+				var possible_targets = actor.current_ability.target_controller.get_targets(actor, turnQueue.actors);
+				if (index >= 0 and index < possible_targets.size()):
+					ability_targets_selected.emit([possible_targets[index]]);
+
 	pass
+
+
+signal ability_targets_selected(targets: Array[ActorController]);

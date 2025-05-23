@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgcsda3cijeif"]
+[gd_scene load_steps=8 format=3 uid="uid://dgcsda3cijeif"]
 
 [ext_resource type="PackedScene" uid="uid://c1u2hxwl6r15i" path="res://scenes/character.tscn" id="1_j2cp4"]
 [ext_resource type="Script" uid="uid://vcny821ran3" path="res://scripts/abilities/ability_controller.gd" id="2_woyp2"]
 [ext_resource type="Script" uid="uid://dohwmvk8edwkg" path="res://scripts/abilities/effects/damage_effect.gd" id="3_br84i"]
+[ext_resource type="Script" uid="uid://d1plas3actgj3" path="res://scripts/abilities/targets/ability_target_controller.gd" id="3_ef12s"]
 [ext_resource type="Script" uid="uid://c8dtxa5dpbjkh" path="res://scripts/stats/stat_controller.gd" id="4_w34w8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_odekq"]
@@ -19,7 +20,11 @@ mesh = SubResource("CapsuleMesh_rdqci")
 [node name="Attack" type="Node" parent="AbilitySet" index="0"]
 script = ExtResource("2_woyp2")
 
-[node name="DamageEffect" type="Node" parent="AbilitySet/Attack" index="0"]
+[node name="AbilityTargetController" type="Node" parent="AbilitySet/Attack" index="0"]
+script = ExtResource("3_ef12s")
+metadata/_custom_type_script = "uid://d1plas3actgj3"
+
+[node name="DamageEffect" type="Node" parent="AbilitySet/Attack" index="1"]
 script = ExtResource("3_br84i")
 amount = 10.0
 metadata/_custom_type_script = "uid://dohwmvk8edwkg"

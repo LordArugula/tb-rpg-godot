@@ -11,6 +11,8 @@ var stats: StatSet = $StatSet;
 @onready
 var animation_player: AnimationPlayer = $AnimationPlayer;
 
+var current_ability: AbilityController;
+
 func start_turn():
 	turn_started.emit(self);
 
@@ -18,6 +20,7 @@ func start_turn():
 	if (ability == null):
 		return ;
 	
+	current_ability = ability;
 	print("%s selected %s" % [self.name, ability.name]);
 	
 	var targets: Array[ActorController] = [];
@@ -28,7 +31,8 @@ func start_turn():
 	activate_ability(ability, targets);
 
 	turn_ended.emit(self);
-
+	current_ability = null;
+	
 	pass
 
 
