@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://yl62i72xhd3b"]
+
+[ext_resource type="Script" uid="uid://vcny821ran3" path="res://scripts/abilities/ability_controller.gd" id="1_74pk7"]
+[ext_resource type="Script" uid="uid://d1plas3actgj3" path="res://scripts/abilities/targets/ability_target_controller.gd" id="2_nx5q6"]
+[ext_resource type="Script" uid="uid://j8er6obunt7a" path="res://scripts/abilities/effects/heal_effect.gd" id="3_3d25j"]
+
+[node name="Heal" type="Node"]
+script = ExtResource("1_74pk7")
+metadata/_custom_type_script = "uid://vcny821ran3"
+
+[node name="AbilityTargetController" type="Node" parent="."]
+script = ExtResource("2_nx5q6")
+metadata/_custom_type_script = "uid://d1plas3actgj3"
+
+[node name="HealEffect" type="Node" parent="."]
+script = ExtResource("3_3d25j")
+amount = 10.0
+metadata/_custom_type_script = "uid://dhsvcrrywnjwu"

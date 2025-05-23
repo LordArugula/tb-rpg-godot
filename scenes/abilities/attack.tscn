@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccu2u7ht31q57"]
+
+[ext_resource type="Script" uid="uid://vcny821ran3" path="res://scripts/abilities/ability_controller.gd" id="1_837qt"]
+[ext_resource type="Script" uid="uid://d1plas3actgj3" path="res://scripts/abilities/targets/ability_target_controller.gd" id="2_qor4t"]
+[ext_resource type="Script" uid="uid://dohwmvk8edwkg" path="res://scripts/abilities/effects/damage_effect.gd" id="3_i3ljx"]
+
+[node name="Attack" type="Node"]
+script = ExtResource("1_837qt")
+
+[node name="AbilityTargetController" type="Node" parent="."]
+script = ExtResource("2_qor4t")
+metadata/_custom_type_script = "uid://d1plas3actgj3"
+
+[node name="DamageEffect" type="Node" parent="."]
+script = ExtResource("3_i3ljx")
+amount = 10.0
+metadata/_custom_type_script = "uid://dohwmvk8edwkg"

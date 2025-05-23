@@ -1,11 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://uka01qjj1jym"]
+[gd_scene load_steps=7 format=3 uid="uid://uka01qjj1jym"]
 
 [ext_resource type="PackedScene" uid="uid://c1u2hxwl6r15i" path="res://scenes/character.tscn" id="1_g3mik"]
-[ext_resource type="Script" uid="uid://vcny821ran3" path="res://scripts/abilities/ability_controller.gd" id="2_2ben8"]
-[ext_resource type="Script" uid="uid://d1plas3actgj3" path="res://scripts/abilities/targets/ability_target_controller.gd" id="3_6k3rp"]
-[ext_resource type="Script" uid="uid://dohwmvk8edwkg" path="res://scripts/abilities/effects/damage_effect.gd" id="3_8t7fw"]
+[ext_resource type="PackedScene" uid="uid://ccu2u7ht31q57" path="res://scenes/abilities/attack.tscn" id="2_8t7fw"]
+[ext_resource type="PackedScene" uid="uid://yl62i72xhd3b" path="res://scenes/abilities/heal.tscn" id="3_lbo0s"]
 [ext_resource type="Script" uid="uid://c8dtxa5dpbjkh" path="res://scripts/stats/stat_controller.gd" id="4_8t7fw"]
-[ext_resource type="Script" uid="uid://j8er6obunt7a" path="res://scripts/abilities/effects/heal_effect.gd" id="4_lbo0s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dxpkv"]
 albedo_color = Color(1, 0.215686, 1, 1)
@@ -18,30 +16,9 @@ material = SubResource("StandardMaterial3D_dxpkv")
 [node name="MeshInstance3D" parent="CharacterBody3D/Pivot" index="0"]
 mesh = SubResource("CapsuleMesh_nnuga")
 
-[node name="Attack" type="Node" parent="AbilitySet" index="0"]
-script = ExtResource("2_2ben8")
+[node name="Attack" parent="AbilitySet" index="0" instance=ExtResource("2_8t7fw")]
 
-[node name="AbilityTargetController" type="Node" parent="AbilitySet/Attack" index="0"]
-script = ExtResource("3_6k3rp")
-metadata/_custom_type_script = "uid://d1plas3actgj3"
-
-[node name="DamageEffect" type="Node" parent="AbilitySet/Attack" index="1"]
-script = ExtResource("3_8t7fw")
-amount = 10.0
-metadata/_custom_type_script = "uid://dohwmvk8edwkg"
-
-[node name="Heal" type="Node" parent="AbilitySet" index="1"]
-script = ExtResource("2_2ben8")
-metadata/_custom_type_script = "uid://vcny821ran3"
-
-[node name="AbilityTargetController" type="Node" parent="AbilitySet/Heal" index="0"]
-script = ExtResource("3_6k3rp")
-metadata/_custom_type_script = "uid://d1plas3actgj3"
-
-[node name="HealEffect" type="Node" parent="AbilitySet/Heal" index="1"]
-script = ExtResource("4_lbo0s")
-amount = 10.0
-metadata/_custom_type_script = "uid://dhsvcrrywnjwu"
+[node name="Heal" parent="AbilitySet" index="1" instance=ExtResource("3_lbo0s")]
 
 [node name="Health" type="Node" parent="StatSet" index="0"]
 script = ExtResource("4_8t7fw")
