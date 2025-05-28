@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://uka01qjj1jym"]
 
-[ext_resource type="PackedScene" uid="uid://c1u2hxwl6r15i" path="res://scenes/character.tscn" id="1_g3mik"]
+[ext_resource type="PackedScene" uid="uid://c1u2hxwl6r15i" path="res://scenes/characters/character.tscn" id="1_g3mik"]
 [ext_resource type="PackedScene" uid="uid://ccu2u7ht31q57" path="res://scenes/abilities/attack.tscn" id="2_8t7fw"]
 [ext_resource type="PackedScene" uid="uid://yl62i72xhd3b" path="res://scenes/abilities/heal.tscn" id="3_lbo0s"]
 [ext_resource type="Script" uid="uid://c8dtxa5dpbjkh" path="res://scripts/stats/stat_controller.gd" id="4_8t7fw"]

@@ -9,5 +9,13 @@ func _ready() -> void:
 	pass
 
 
-func get_targets(actor: ActorController, actors: Array[ActorController]) -> Array[ActorController]:
-	return filters.reduce(func(targets, filter): return filter.apply(actor, targets), actors)
+func can_target(actor: ActorController, target: ActorController) -> bool:
+	return filters.all(func(filter: AbilityTargetFilter): return filter.matches(actor, [target]));
+
+
+func matches(actor: ActorController, targets: Array[ActorController]) -> bool:
+	return targets.all(func(target):
+		return filters.all(func(filter: AbilityTargetFilter):
+			return filter.matches(actor, target);
+		);
+	);

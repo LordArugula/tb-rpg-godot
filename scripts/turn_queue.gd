@@ -3,6 +3,9 @@ class_name TurnQueue;
 var actors: Array[ActorController];
 var current: int;
 
+var count: int:
+	get:
+		return actors.size();
 
 func move_next():
 	current = (current + 1) % actors.size();
@@ -25,7 +28,14 @@ func add_back(actor: ActorController):
 
 
 func remove(actor: ActorController):
-	actors.erase(actor);
+	var index = actors.find(actor);
+	if (index == -1):
+		return
+
+	actors.remove_at(index);
+	if (index <= current):
+		current -= 1;
+
 	pass
 
 
