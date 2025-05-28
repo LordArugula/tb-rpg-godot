@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqcysic4rjbu8"]
+[gd_scene load_steps=7 format=3 uid="uid://cqcysic4rjbu8"]
 
 [ext_resource type="PackedScene" uid="uid://bstbupk84d55" path="res://scenes/environment.tscn" id="1_rchuw"]
+[ext_resource type="PackedScene" uid="uid://c7xwv4w2yb8nf" path="res://scenes/user_interface/ability_menu.tscn" id="2_tbgi4"]
 [ext_resource type="Script" uid="uid://djxf0bx482oy3" path="res://scripts/battle_manager.gd" id="2_wsbfn"]
-[ext_resource type="PackedScene" uid="uid://dgcsda3cijeif" path="res://scenes/character_a.tscn" id="3_4dikk"]
-[ext_resource type="PackedScene" uid="uid://uka01qjj1jym" path="res://scenes/character_b.tscn" id="4_k6v5f"]
+[ext_resource type="PackedScene" uid="uid://dgcsda3cijeif" path="res://scenes/characters/character_a.tscn" id="3_4dikk"]
+[ext_resource type="PackedScene" uid="uid://bghpkopqnmx41" path="res://scenes/user_interface/ability_target_menu.tscn" id="3_tefeu"]
+[ext_resource type="PackedScene" uid="uid://uka01qjj1jym" path="res://scenes/characters/character_b.tscn" id="4_k6v5f"]
 
 [node name="Main" type="Node3D"]
 
@@ -15,11 +17,33 @@ transform = Transform3D(1, 0, 0, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, 
 
 [node name="Environment" parent="." instance=ExtResource("1_rchuw")]
 
+[node name="UserInterface" type="Node" parent="."]
+
+[node name="AbilityActionMenu" parent="UserInterface" instance=ExtResource("2_tbgi4")]
+mouse_filter = 2
+
+[node name="AbilityTargetMenu" parent="UserInterface" instance=ExtResource("3_tefeu")]
+mouse_filter = 2
+
 [node name="BattleManager" type="Node" parent="."]
 script = ExtResource("2_wsbfn")
 
 [node name="Character A" parent="BattleManager" instance=ExtResource("3_4dikk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -4)
+faction = &"Player"
+
+[node name="Character A2" parent="BattleManager" instance=ExtResource("3_4dikk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, 4)
+faction = &"Player"
 
 [node name="Character B" parent="BattleManager" instance=ExtResource("4_k6v5f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -4)
+faction = &"Enemy"
+
+[node name="Character B2" parent="BattleManager" instance=ExtResource("4_k6v5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 4)
+faction = &"Enemy"
+
+[node name="Character B3" parent="BattleManager" instance=ExtResource("4_k6v5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 0)
+faction = &"Enemy"

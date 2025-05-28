@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7xwv4w2yb8nf"]
+
+[ext_resource type="Script" uid="uid://dpcn8er7uquke" path="res://scripts/user_interface/ability_action_menu.gd" id="1_c1tny"]
+
+[node name="AbilityActionMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c1tny")
+
+[node name="AbilityButtonContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 1
