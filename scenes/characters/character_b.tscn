@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://uka01qjj1jym"]
+
+[ext_resource type="PackedScene" uid="uid://c1u2hxwl6r15i" path="res://scenes/characters/character.tscn" id="1_g3mik"]
+[ext_resource type="PackedScene" uid="uid://cex05ence715t" path="res://scenes/abilities/attack.tscn" id="2_mqsx0"]
+[ext_resource type="PackedScene" uid="uid://bno65s5ytyoq4" path="res://scenes/abilities/heal.tscn" id="3_q8g25"]
+[ext_resource type="Script" uid="uid://c8dtxa5dpbjkh" path="res://scripts/stats/stat_controller.gd" id="4_8t7fw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dxpkv"]
+albedo_color = Color(1, 0.215686, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_nnuga"]
+material = SubResource("StandardMaterial3D_dxpkv")
+
+[node name="ActorController" instance=ExtResource("1_g3mik")]
+
+[node name="MeshInstance3D" parent="CharacterBody3D/Pivot" index="0"]
+mesh = SubResource("CapsuleMesh_nnuga")
+
+[node name="Attack" parent="AbilitySet" index="0" instance=ExtResource("2_mqsx0")]
+
+[node name="Heal" parent="AbilitySet" index="1" instance=ExtResource("3_q8g25")]
+
+[node name="Health" type="Node" parent="StatSet" index="0"]
+script = ExtResource("4_8t7fw")
+metadata/_custom_type_script = "uid://c8dtxa5dpbjkh"
+
+[node name="MaxHealth" type="Node" parent="StatSet" index="1"]
+script = ExtResource("4_8t7fw")
+base_value = 100.0
+metadata/_custom_type_script = "uid://c8dtxa5dpbjkh"
+
+[node name="Level" type="Node" parent="StatSet" index="2"]
+script = ExtResource("4_8t7fw")
+base_value = 5.0
+metadata/_custom_type_script = "uid://c8dtxa5dpbjkh"
+
+[node name="Attack" type="Node" parent="StatSet" index="3"]
+script = ExtResource("4_8t7fw")
+base_value = 10.0
+metadata/_custom_type_script = "uid://c8dtxa5dpbjkh"
+
+[node name="Defense" type="Node" parent="StatSet" index="4"]
+script = ExtResource("4_8t7fw")
+base_value = 10.0
+metadata/_custom_type_script = "uid://c8dtxa5dpbjkh"
+
+[editable path="AbilitySet/Attack"]
+[editable path="AbilitySet/Heal"]

@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://bstbupk84d55" path="res://scenes/environment.tscn" id="1_rchuw"]
 [ext_resource type="Script" uid="uid://djxf0bx482oy3" path="res://scripts/battle_manager.gd" id="2_wsbfn"]
-[ext_resource type="PackedScene" uid="uid://dgcsda3cijeif" path="res://scenes/character_a.tscn" id="3_4dikk"]
-[ext_resource type="PackedScene" uid="uid://uka01qjj1jym" path="res://scenes/character_b.tscn" id="4_k6v5f"]
+[ext_resource type="PackedScene" uid="uid://dgcsda3cijeif" path="res://scenes/characters/character_a.tscn" id="3_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://uka01qjj1jym" path="res://scenes/characters/character_b.tscn" id="4_tbgi4"]
 
 [node name="Main" type="Node3D"]
 
@@ -18,8 +18,17 @@ transform = Transform3D(1, 0, 0, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, 
 [node name="BattleManager" type="Node" parent="."]
 script = ExtResource("2_wsbfn")
 
-[node name="Character A" parent="BattleManager" instance=ExtResource("3_4dikk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, 0)
+[node name="CharacterA" parent="BattleManager" instance=ExtResource("3_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 3)
 
-[node name="Character B" parent="BattleManager" instance=ExtResource("4_k6v5f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 0)
+[node name="CharacterA2" parent="BattleManager" instance=ExtResource("3_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -3)
+
+[node name="CharacterB" parent="BattleManager" instance=ExtResource("4_tbgi4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="CharacterB2" parent="BattleManager" instance=ExtResource("4_tbgi4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -4)
+
+[node name="CharacterB3" parent="BattleManager" instance=ExtResource("4_tbgi4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 4)
