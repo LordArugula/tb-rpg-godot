@@ -5,11 +5,13 @@ class_name BattleManager;
 var turnQueue: TurnQueue;
 
 func _ready() -> void:
-	var children = get_children().filter(func(child: Node): return child is ActorController);
+	var actors = get_children().filter(func(child: Node): return child is ActorController);
 
 	turnQueue = TurnQueue.new();
-	for child in children:
-		turnQueue.add_end(child);
+	for actor: ActorController in actors:
+		actor.damage_taken.connect(_on_actor_damage_taken);
+		actor.healing_taken.connect(_on_actor_healing_taken);
+		turnQueue.add_end(actor);
 		pass
 
 	start_battle.call_deferred();
@@ -72,6 +74,16 @@ func get_possible_targets(actor: ActorController, ability: AbilityController) ->
 	return turnQueue.actors.filter(func(_actor): return ability.can_target(actor, _actor));
 
 
+func _on_actor_damage_taken(actor: ActorController, damage: float):
+	actor_damage_taken.emit(actor, damage);
+	pass
+
+
+func _on_actor_healing_taken(actor: ActorController, healing: float):
+	actor_healing_taken.emit(actor, healing);
+	pass
+
+
 signal actor_ability_selected(actor: ActorController, ability: AbilityController);
 signal actor_ability_unselected(actor: ActorController, ability: AbilityController);
 
@@ -83,3 +95,6 @@ signal battle_lost();
 signal actor_turn_started(actor: ActorController);
 signal actor_turn_ended(actor: ActorController);
 signal actor_ability_used(actor: ActorController, ability: AbilityController, targets: Array[ActorController]);
+
+signal actor_damage_taken(actor: ActorController, damage: float);
+signal actor_healing_taken(actor: ActorController, healing: float);

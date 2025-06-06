@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cqcysic4rjbu8"]
+[gd_scene load_steps=10 format=3 uid="uid://cqcysic4rjbu8"]
 
 [ext_resource type="PackedScene" uid="uid://bstbupk84d55" path="res://scenes/environment.tscn" id="1_rchuw"]
 [ext_resource type="Script" uid="uid://djv1t5onqxfva" path="res://scripts/user_interface/actor_actions_menu.gd" id="2_tipki"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://b827f7dsehi6e" path="res://scripts/user_interface/actor_cancel_action_menu.gd" id="4_choun"]
 [ext_resource type="PackedScene" uid="uid://uka01qjj1jym" path="res://scenes/characters/character_b.tscn" id="4_tbgi4"]
 [ext_resource type="Script" uid="uid://bbgkwfqo0dj5y" path="res://scripts/user_interface/actor_stats_menu.gd" id="5_ya4ey"]
+[ext_resource type="Script" uid="uid://cbwjpx826o3np" path="res://scripts/battle_logger.gd" id="6_85g3d"]
 
 [node name="Main" type="Node3D"]
 
@@ -61,6 +62,9 @@ offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 script = ExtResource("5_ya4ey")
+
+[node name="BattleLogger" type="Node" parent="."]
+script = ExtResource("6_85g3d")
 
 [node name="BattleManager" type="Node" parent="."]
 script = ExtResource("2_wsbfn")
