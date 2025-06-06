@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqcysic4rjbu8"]
+[gd_scene load_steps=9 format=3 uid="uid://cqcysic4rjbu8"]
 
 [ext_resource type="PackedScene" uid="uid://bstbupk84d55" path="res://scenes/environment.tscn" id="1_rchuw"]
+[ext_resource type="Script" uid="uid://djv1t5onqxfva" path="res://scripts/user_interface/actor_actions_menu.gd" id="2_tipki"]
 [ext_resource type="Script" uid="uid://djxf0bx482oy3" path="res://scripts/battle_manager.gd" id="2_wsbfn"]
+[ext_resource type="Script" uid="uid://w5c1rbmwsb57" path="res://scripts/user_interface/actor_target_menu.gd" id="3_85g3d"]
 [ext_resource type="PackedScene" uid="uid://dgcsda3cijeif" path="res://scenes/characters/character_a.tscn" id="3_jyhfs"]
+[ext_resource type="Script" uid="uid://b827f7dsehi6e" path="res://scripts/user_interface/actor_cancel_action_menu.gd" id="4_choun"]
 [ext_resource type="PackedScene" uid="uid://uka01qjj1jym" path="res://scenes/characters/character_b.tscn" id="4_tbgi4"]
+[ext_resource type="Script" uid="uid://bbgkwfqo0dj5y" path="res://scripts/user_interface/actor_stats_menu.gd" id="5_ya4ey"]
 
 [node name="Main" type="Node3D"]
 
@@ -15,20 +19,63 @@ transform = Transform3D(1, 0, 0, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, 
 
 [node name="Environment" parent="." instance=ExtResource("1_rchuw")]
 
+[node name="UserInterface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ActorActionsMenu" type="Control" parent="UserInterface"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("2_tipki")
+
+[node name="ActorTargetMenu" type="Control" parent="UserInterface"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_85g3d")
+
+[node name="ActorCancelMenu" type="Control" parent="UserInterface"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("4_choun")
+
+[node name="ActorStatsMenu" type="Control" parent="UserInterface"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("5_ya4ey")
+
 [node name="BattleManager" type="Node" parent="."]
 script = ExtResource("2_wsbfn")
 
 [node name="CharacterA" parent="BattleManager" instance=ExtResource("3_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 3)
 
 [node name="CharacterA2" parent="BattleManager" instance=ExtResource("3_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -3)
 
 [node name="CharacterB" parent="BattleManager" instance=ExtResource("4_tbgi4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 0)
 
 [node name="CharacterB2" parent="BattleManager" instance=ExtResource("4_tbgi4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -4)
 
 [node name="CharacterB3" parent="BattleManager" instance=ExtResource("4_tbgi4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 4)

@@ -39,5 +39,9 @@ func resolve(actor: ActorController, targets: Array[ActorController]):
 	pass
 
 
+func can_target(_actor: ActorController, _target: ActorController):
+	return true;
+
+
 signal on_activated(actor: ActorController, targets: Array[ActorController]);
 signal on_resolved(actor: ActorController, targets: Array[ActorController]);

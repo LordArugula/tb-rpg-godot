@@ -21,6 +21,12 @@ func get_stat(stat: StringName) -> StatController:
 	return stats[stat];
 
 
-func set_stat(stat: StringName, value: float):
-	stats[stat].value = value;
-	pass
+func add_stat(stat: StringName, value: float) -> StatController:
+	if stats.has(stat):
+		return stats[stat];
+	
+	var statController = StatController.new();
+	statController.name = stat;
+	statController.value = value;
+	stats[stat] = statController;
+	return statController;
