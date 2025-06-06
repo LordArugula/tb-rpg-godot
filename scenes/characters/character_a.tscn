@@ -11,6 +11,7 @@ albedo_color = Color(1, 1, 0.215686, 1)
 material = SubResource("StandardMaterial3D_odekq")
 
 [node name="ActorController" instance=ExtResource("1_j2cp4")]
+faction = &"Player"
 
 [node name="MeshInstance3D" parent="CharacterBody3D/Pivot" index="0"]
 mesh = SubResource("CapsuleMesh_rdqci")

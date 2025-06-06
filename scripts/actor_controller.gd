@@ -2,6 +2,9 @@ extends Node3D;
 
 class_name ActorController;
 
+@export
+var faction: StringName;
+
 @onready
 var abilities: AbilitySet = $AbilitySet;
 
