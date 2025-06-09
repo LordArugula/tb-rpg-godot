@@ -24,10 +24,16 @@ func _ready():
 
 
 func compute():
-	current_value = base_value;
+	var base = base_value;
+	var current = base_value;
 	for modifier in modifiers:
-		current_value = modifier.modify(base_value, current_value);
+		var values = modifier.modify(base, current);
+		base = values.base;
+		current = values.current;
 		pass
+	
+	base_value = base;
+	current_value = current;
 	pass
 
 

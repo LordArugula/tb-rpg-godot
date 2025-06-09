@@ -11,6 +11,7 @@ func _ready() -> void:
 	for actor: ActorController in actors:
 		actor.damage_taken.connect(_on_actor_damage_taken);
 		actor.healing_taken.connect(_on_actor_healing_taken);
+		actor.knocked_out.connect(_on_actor_knocked_out);
 		turnQueue.add_end(actor);
 		pass
 
@@ -84,6 +85,11 @@ func _on_actor_healing_taken(actor: ActorController, healing: float):
 	pass
 
 
+func _on_actor_knocked_out(actor: ActorController):
+	actor_knocked_out.emit(actor);
+	pass
+
+
 signal actor_ability_selected(actor: ActorController, ability: AbilityController);
 signal actor_ability_unselected(actor: ActorController, ability: AbilityController);
 
@@ -98,3 +104,4 @@ signal actor_ability_used(actor: ActorController, ability: AbilityController, ta
 
 signal actor_damage_taken(actor: ActorController, damage: float);
 signal actor_healing_taken(actor: ActorController, healing: float);
+signal actor_knocked_out(actor: ActorController);

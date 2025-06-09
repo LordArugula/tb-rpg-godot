@@ -34,17 +34,24 @@ func activate_ability(ability: AbilityController, targets: Array[ActorController
 
 func play_animation(animation: StringName):
 	if (animation.is_empty()):
-		return;
+		return ;
 
 	animation_player.play(animation);
 	pass
 
 
 func take_damage(amount: float):
-	var health = stats.get_stat(&"Health");
-	health.value -= amount;
+	var mitigation = get_damage_mitigation();
+	var damage = max(amount - mitigation, 0);
 
-	damage_taken.emit(self, amount);
+	var health = stats.get_stat(&"Health");
+	health.value -= damage;
+
+	damage_taken.emit(self, damage);
+
+	if health.value <= 0:
+		knocked_out.emit(self);
+		pass
 
 	pass
 
@@ -58,8 +65,23 @@ func take_healing(amount: float):
 	pass
 
 
+func get_base_damage() -> float:
+	var level = stats.get_stat(&"Level");
+	var attack = stats.get_stat(&"Attack");
+
+	return level.value * attack.value;
+
+
+func get_damage_mitigation() -> float:
+	var level = stats.get_stat(&"Level");
+	var defense = stats.get_stat(&"Defense");
+
+	return level.value * defense.value / 2;
+
+
 signal turn_started(actor: ActorController);
 signal turn_ended(actor: ActorController);
 
 signal damage_taken(actor: ActorController, amount: float);
 signal healing_taken(actor: ActorController, amount: float);
+signal knocked_out(actor: ActorController);

@@ -7,9 +7,10 @@ func start(_actor: ActorController, _targets: Array[ActorController]):
 	pass
 
 
-func apply(_actor: ActorController, targets: Array[ActorController]):
+func apply(actor: ActorController, targets: Array[ActorController]):
+	var damage = actor.get_base_damage() * amount;
 	for target in targets:
-		target.take_damage(floorf(amount));
+		target.take_damage(floorf(damage));
 		pass
 
 	pass
