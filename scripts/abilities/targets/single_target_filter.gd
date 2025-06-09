@@ -1,8 +1,8 @@
 extends AbilityTargetFilter;
 
-func apply(actor: ActorController, actors: Array[ActorController]) -> Array[ActorController]:
-	return actors;
+func can_target(_actor: ActorController, _target: ActorController) -> bool:
+	return true;
 
 
-func matches(actor: ActorController, actors: Array[ActorController]) -> bool:
-	return actors.size() == 1;
+func matches(_actor: ActorController, targets: Array[ActorController]) -> bool:
+	return targets.size() == 1;

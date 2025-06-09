@@ -8,6 +8,7 @@ func _ready() -> void:
 	filters.assign(get_children().filter(func(child): return child is AbilityTargetFilter));
 	pass
 
-
-func get_targets(actor: ActorController, actors: Array[ActorController]) -> Array[ActorController]:
-	return filters.reduce(func(targets, filter): return filter.apply(actor, targets), actors)
+func can_target(actor: ActorController, target: ActorController):
+	return filters.all(func(filter: AbilityTargetFilter):
+		return filter.can_target(actor, target);
+	);
