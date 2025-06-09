@@ -1,4 +1,7 @@
-extends Node
+extends Control;
+
+@onready
+var container: Control = $ActionsContainer;
 
 @onready
 var battle_manager: BattleManager = $"/root/Main/BattleManager";
@@ -11,11 +14,13 @@ func _ready() -> void:
 
 func _on_battle_manager_actor_turn_started(actor: ActorController):
 	show_menu(actor);
+	container.grab_focus();
 	pass
 
 
 func _on_battle_manager_actor_ability_unselected(actor: ActorController, _ability: AbilityController):
 	show_menu(actor);
+	container.grab_focus();
 	pass
 
 
@@ -29,13 +34,13 @@ func show_menu(actor: ActorController):
 			pass
 		);
 
-		self.add_child(button);
+		container.add_child(button);
 		pass
 	pass
 
 
 func hide_menu():
-	for child in self.get_children():
+	for child in container.get_children():
 		child.queue_free();
 	
 	pass

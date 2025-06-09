@@ -1,4 +1,4 @@
-extends Node
+extends Control;
 
 @onready
 var battle_manager: BattleManager = $"/root/Main/BattleManager";

@@ -1,4 +1,4 @@
-extends Node
+extends Control;
 
 @onready
 var battle_manager: BattleManager = $"/root/Main/BattleManager";
@@ -14,6 +14,7 @@ func _ready() -> void:
 
 func _on_battle_manager_actor_ability_selected(actor: ActorController, ability: AbilityController):
 	show_menu(actor, ability);
+	grab_focus();
 	pass
 
 
@@ -47,7 +48,7 @@ func hide_menu():
 	pass
 
 
-func set_button_position(button: Button, position: Vector2):
+func set_button_position(button: Button, targetPosition: Vector2):
 	var offset = button.size / 2;
-	button.set_position(position - offset);
+	button.set_position(targetPosition - offset);
 	pass

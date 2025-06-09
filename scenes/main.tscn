@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cqcysic4rjbu8"]
 
 [ext_resource type="PackedScene" uid="uid://bstbupk84d55" path="res://scenes/environment.tscn" id="1_rchuw"]
-[ext_resource type="Script" uid="uid://djv1t5onqxfva" path="res://scripts/user_interface/actor_actions_menu.gd" id="2_tipki"]
+[ext_resource type="PackedScene" uid="uid://8m5uosdfig4" path="res://scenes/user_interfaces/actor_actions_menu.tscn" id="2_85g3d"]
 [ext_resource type="Script" uid="uid://djxf0bx482oy3" path="res://scripts/battle_manager.gd" id="2_wsbfn"]
 [ext_resource type="Script" uid="uid://w5c1rbmwsb57" path="res://scripts/user_interface/actor_target_menu.gd" id="3_85g3d"]
 [ext_resource type="PackedScene" uid="uid://dgcsda3cijeif" path="res://scenes/characters/character_a.tscn" id="3_jyhfs"]
@@ -29,13 +29,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ActorActionsMenu" type="Control" parent="UserInterface"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-mouse_filter = 2
-script = ExtResource("2_tipki")
+[node name="ActorActionsMenu" parent="UserInterface" instance=ExtResource("2_85g3d")]
+layout_mode = 1
 
 [node name="ActorTargetMenu" type="Control" parent="UserInterface"]
 layout_mode = 1
@@ -44,6 +39,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 1
 mouse_filter = 2
 script = ExtResource("3_85g3d")
 
@@ -52,6 +48,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+focus_mode = 1
 mouse_filter = 2
 script = ExtResource("4_choun")
 
@@ -60,6 +57,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+focus_mode = 1
 mouse_filter = 2
 script = ExtResource("5_ya4ey")
 
