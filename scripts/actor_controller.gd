@@ -14,6 +14,15 @@ var stats: StatSet = $StatSet;
 @onready
 var animation_player: AnimationPlayer = $AnimationPlayer;
 
+@onready
+var character_body: CharacterBody3D = $"CharacterBody3D";
+
+func _ready():
+	character_body.mouse_entered.connect(_on_mouse_entered);
+	character_body.mouse_exited.connect(_on_mouse_exited);
+	pass
+
+
 func start_turn():
 	turn_started.emit(self);
 	pass
@@ -79,9 +88,22 @@ func get_damage_mitigation() -> float:
 	return level.value * defense.value / 2;
 
 
+func _on_mouse_entered():
+	mouse_entered.emit(self);
+	pass
+
+
+func _on_mouse_exited():
+	mouse_exited.emit(self);
+	pass
+
+
 signal turn_started(actor: ActorController);
 signal turn_ended(actor: ActorController);
 
 signal damage_taken(actor: ActorController, amount: float);
 signal healing_taken(actor: ActorController, amount: float);
 signal knocked_out(actor: ActorController);
+
+signal mouse_entered(actor: ActorController);
+signal mouse_exited(actor: ActorController);

@@ -6,6 +6,8 @@ var battle_manager: BattleManager = $"/root/Main/BattleManager";
 func _ready() -> void:
 	battle_manager.actor_ability_selected.connect(_on_battle_manager_actor_ability_selected);
 	battle_manager.actor_ability_used.connect(_on_battle_manager_actor_ability_used);
+
+	hide_menu();
 	pass
 
 
@@ -29,11 +31,15 @@ func show_menu(actor: ActorController, ability: AbilityController):
 	);
 
 	self.add_child(button);
+	show();
+
 	pass
 
 
 func hide_menu():
 	for child in self.get_children():
 		child.queue_free();
+	
+	hide();
 	
 	pass

@@ -12,6 +12,10 @@ func _ready() -> void:
 		actor.damage_taken.connect(_on_actor_damage_taken);
 		actor.healing_taken.connect(_on_actor_healing_taken);
 		actor.knocked_out.connect(_on_actor_knocked_out);
+
+		actor.mouse_entered.connect(_on_actor_mouse_entered);
+		actor.mouse_exited.connect(_on_actor_mouse_exited);
+		
 		turnQueue.add_end(actor);
 		pass
 
@@ -90,8 +94,15 @@ func _on_actor_knocked_out(actor: ActorController):
 	pass
 
 
-signal actor_ability_selected(actor: ActorController, ability: AbilityController);
-signal actor_ability_unselected(actor: ActorController, ability: AbilityController);
+func _on_actor_mouse_entered(actor: ActorController):
+	actor_mouse_entered.emit(actor);
+	pass
+
+
+func _on_actor_mouse_exited(actor: ActorController):
+	actor_mouse_exited.emit(actor);
+	pass
+
 
 signal battle_started();
 signal battle_ended();
@@ -105,3 +116,8 @@ signal actor_ability_used(actor: ActorController, ability: AbilityController, ta
 signal actor_damage_taken(actor: ActorController, damage: float);
 signal actor_healing_taken(actor: ActorController, healing: float);
 signal actor_knocked_out(actor: ActorController);
+
+signal actor_ability_selected(actor: ActorController, ability: AbilityController);
+signal actor_ability_unselected(actor: ActorController, ability: AbilityController);
+signal actor_mouse_entered(actor: ActorController);
+signal actor_mouse_exited(actor: ActorController);
