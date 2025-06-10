@@ -3,6 +3,7 @@ extends Node
 class_name BattleManager;
 
 var turnQueue: TurnQueue;
+var knockedOutActors: Array[ActorController];
 
 func _ready() -> void:
 	var actors = get_children().filter(func(child: Node): return child is ActorController);
@@ -90,6 +91,11 @@ func _on_actor_healing_taken(actor: ActorController, healing: float):
 
 
 func _on_actor_knocked_out(actor: ActorController):
+	turnQueue.remove(actor);
+	knockedOutActors.push_back(actor);
+	
+	self.remove_child(actor);
+
 	actor_knocked_out.emit(actor);
 	pass
 

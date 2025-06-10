@@ -25,7 +25,15 @@ func add_back(actor: ActorController):
 
 
 func remove(actor: ActorController):
-	actors.erase(actor);
+	var index = actors.find(actor);
+	if index == -1:
+		return
+	
+	if index <= current:
+		current -= 1;
+		pass
+	
+	actors.remove_at(index);
 	pass
 
 
