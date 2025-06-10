@@ -3,6 +3,9 @@ extends Control;
 @onready
 var battle_manager: BattleManager = $"/root/Main/BattleManager";
 
+var __actor: ActorController;
+var __ability: AbilityController;
+
 func _ready() -> void:
 	battle_manager.actor_ability_selected.connect(_on_battle_manager_actor_ability_selected);
 	battle_manager.actor_ability_used.connect(_on_battle_manager_actor_ability_used);
@@ -12,7 +15,9 @@ func _ready() -> void:
 
 
 func _on_battle_manager_actor_ability_selected(actor: ActorController, ability: AbilityController):
-	show_menu(actor, ability);
+	__actor = actor;
+	__ability = ability;
+	show_menu();
 	pass
 
 
@@ -21,14 +26,10 @@ func _on_battle_manager_actor_ability_used(_actor: ActorController, _ability: Ab
 	pass
 
 
-func show_menu(actor: ActorController, ability: AbilityController):
+func show_menu():
 	var button = Button.new();
 	button.text = "Cancel";
-	button.pressed.connect(func():
-		battle_manager.unselect_ability(actor, ability);
-		hide_menu();
-		pass
-	);
+	button.pressed.connect(cancel_action);
 
 	self.add_child(button);
 	show();
@@ -42,4 +43,22 @@ func hide_menu():
 	
 	hide();
 	
+	pass
+
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
+		cancel_action();
+		pass
+	
+	pass
+
+
+func cancel_action():
+	battle_manager.unselect_ability(__actor, __ability);
+	
+	__actor = null;
+	__ability = null;
+
+	hide_menu();
 	pass
