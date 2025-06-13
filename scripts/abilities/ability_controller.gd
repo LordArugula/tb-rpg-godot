@@ -39,6 +39,10 @@ func resolve(actor: ActorController, targets: Array[ActorController]):
 	pass
 
 
+func get_target_groups(actor: ActorController, targets: Array[ActorController]) -> Array[AbilityTargetGroupFilter.TargetGroup]:
+	return target_controller.get_target_groups(actor, targets);
+
+
 func can_target(actor: ActorController, target: ActorController):
 	return target_controller.can_target(actor, target);
 

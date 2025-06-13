@@ -25,17 +25,20 @@ func _on_battle_manager_actor_ability_unselected(_actor: ActorController, _abili
 
 
 func show_menu(actor: ActorController, ability: AbilityController):
-	var targets: Array[ActorController] = battle_manager.get_possible_targets(actor, ability);
+	var targetGroups: Array[AbilityTargetGroupFilter.TargetGroup] = battle_manager.get_possible_targets(actor, ability);
 	
-	for target in targets:
+	for targetGroup in targetGroups:
 		var button = Button.new();
-		button.text = target.name;
+		button.text = targetGroup.name;
 		button.pressed.connect(func():
-			battle_manager.confirm_ability_targets(actor, ability, [target]);
+			battle_manager.confirm_ability_targets(actor, ability, targetGroup.targets);
 			hide_menu();
 			pass
 		);
-		set_button_position.call_deferred(button, camera.unproject_position(target.position));
+
+		var targetPosition = targetGroup.targets.reduce(func(acc, target): return acc + target.position, Vector3.ZERO);
+		var avgPosition = targetPosition / targetGroup.targets.size();
+		set_button_position.call_deferred(button, camera.unproject_position(avgPosition));
 		self.add_child(button);
 		pass
 

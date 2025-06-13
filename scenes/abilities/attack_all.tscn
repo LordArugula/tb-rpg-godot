@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4qinscg0muai"]
+
+[ext_resource type="Script" uid="uid://vcny821ran3" path="res://scripts/abilities/ability_controller.gd" id="1_ea5u6"]
+[ext_resource type="Script" uid="uid://d1plas3actgj3" path="res://scripts/abilities/targets/ability_target_controller.gd" id="2_lkfaa"]
+[ext_resource type="Script" uid="uid://cma106fqenna7" path="res://scripts/abilities/targets/groups/all_target_group_filter.gd" id="3_ea5u6"]
+[ext_resource type="Script" uid="uid://b6aowqjk0uj11" path="res://scripts/abilities/targets/filters/enemy_target_filter.gd" id="4_r1s4k"]
+[ext_resource type="Script" uid="uid://dohwmvk8edwkg" path="res://scripts/abilities/effects/damage_effect.gd" id="5_tr0av"]
+
+[node name="Attack All" type="Node"]
+script = ExtResource("1_ea5u6")
+
+[node name="AbilityTargetController" type="Node" parent="."]
+script = ExtResource("2_lkfaa")
+metadata/_custom_type_script = "uid://d1plas3actgj3"
+
+[node name="AllTargetGroupFilter" type="Node" parent="AbilityTargetController"]
+script = ExtResource("3_ea5u6")
+
+[node name="EnemyTargetFilter" type="Node" parent="AbilityTargetController/AllTargetGroupFilter"]
+script = ExtResource("4_r1s4k")
+
+[node name="DamageEffect" type="Node" parent="."]
+script = ExtResource("5_tr0av")
+amount = 1.0
+metadata/_custom_type_script = "uid://dohwmvk8edwkg"

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bno65s5ytyoq4"]
+[gd_scene load_steps=6 format=3 uid="uid://bno65s5ytyoq4"]
 
 [ext_resource type="Script" uid="uid://vcny821ran3" path="res://scripts/abilities/ability_controller.gd" id="1_74pk7"]
 [ext_resource type="Script" uid="uid://d1plas3actgj3" path="res://scripts/abilities/targets/ability_target_controller.gd" id="2_nx5q6"]
 [ext_resource type="Script" uid="uid://j8er6obunt7a" path="res://scripts/abilities/effects/heal_effect.gd" id="3_3d25j"]
-[ext_resource type="Script" uid="uid://tprcgudd62qu" path="res://scripts/abilities/targets/ally_target_filter.gd" id="3_nx5q6"]
+[ext_resource type="Script" uid="uid://dw0b3biwbb2ij" path="res://scripts/abilities/targets/groups/single_target_group_filter.gd" id="3_b3hf3"]
+[ext_resource type="Script" uid="uid://tprcgudd62qu" path="res://scripts/abilities/targets/filters/ally_target_filter.gd" id="3_nx5q6"]
 
 [node name="Heal" type="Node"]
 script = ExtResource("1_74pk7")
@@ -13,7 +14,10 @@ metadata/_custom_type_script = "uid://vcny821ran3"
 script = ExtResource("2_nx5q6")
 metadata/_custom_type_script = "uid://d1plas3actgj3"
 
-[node name="AllyTargetFilter" type="Node" parent="AbilityTargetController"]
+[node name="SingleTargetGroupFilter" type="Node" parent="AbilityTargetController"]
+script = ExtResource("3_b3hf3")
+
+[node name="AllyTargetFilter" type="Node" parent="AbilityTargetController/SingleTargetGroupFilter"]
 script = ExtResource("3_nx5q6")
 
 [node name="HealEffect" type="Node" parent="."]

@@ -2,13 +2,18 @@ extends Node
 
 class_name AbilityTargetController;
 
-var filters: Array[AbilityTargetFilter];
+var groupFilters: Array[AbilityTargetGroupFilter];
 
 func _ready() -> void:
-	filters.assign(get_children().filter(func(child): return child is AbilityTargetFilter));
+	groupFilters.assign(get_children().filter(func(child): return child is AbilityTargetGroupFilter));
 	pass
 
-func can_target(actor: ActorController, target: ActorController):
-	return filters.all(func(filter: AbilityTargetFilter):
-		return filter.can_target(actor, target);
-	);
+
+func get_target_groups(actor: ActorController, targets: Array[ActorController]) -> Array[AbilityTargetGroupFilter.TargetGroup]:
+	var targetGroups: Array[AbilityTargetGroupFilter.TargetGroup];
+	for groupFilter in groupFilters:
+		var groups = groupFilter.get_target_groups(actor, targets);
+		targetGroups.append_array(groups);
+		pass
+	
+	return targetGroups;

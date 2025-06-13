@@ -76,8 +76,8 @@ func confirm_ability_targets(actor: ActorController, ability: AbilityController,
 	pass
 
 
-func get_possible_targets(actor: ActorController, ability: AbilityController) -> Array[ActorController]:
-	return turnQueue.actors.filter(func(_actor): return ability.can_target(actor, _actor));
+func get_possible_targets(actor: ActorController, ability: AbilityController) -> Array[AbilityTargetGroupFilter.TargetGroup]:
+	return ability.get_target_groups(actor, turnQueue.actors);
 
 
 func _on_actor_damage_taken(actor: ActorController, damage: float):

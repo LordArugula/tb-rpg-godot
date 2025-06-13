@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cex05ence715t"]
+[gd_scene load_steps=6 format=3 uid="uid://cex05ence715t"]
 
 [ext_resource type="Script" uid="uid://vcny821ran3" path="res://scripts/abilities/ability_controller.gd" id="1_837qt"]
 [ext_resource type="Script" uid="uid://d1plas3actgj3" path="res://scripts/abilities/targets/ability_target_controller.gd" id="2_qor4t"]
 [ext_resource type="Script" uid="uid://dohwmvk8edwkg" path="res://scripts/abilities/effects/damage_effect.gd" id="3_i3ljx"]
-[ext_resource type="Script" uid="uid://b6aowqjk0uj11" path="res://scripts/abilities/targets/enemy_target_filter.gd" id="3_qor4t"]
+[ext_resource type="Script" uid="uid://dw0b3biwbb2ij" path="res://scripts/abilities/targets/groups/single_target_group_filter.gd" id="3_jw0ul"]
+[ext_resource type="Script" uid="uid://b6aowqjk0uj11" path="res://scripts/abilities/targets/filters/enemy_target_filter.gd" id="3_qor4t"]
 
 [node name="Attack" type="Node"]
 script = ExtResource("1_837qt")
@@ -12,10 +13,13 @@ script = ExtResource("1_837qt")
 script = ExtResource("2_qor4t")
 metadata/_custom_type_script = "uid://d1plas3actgj3"
 
-[node name="EnemyTargetFilter" type="Node" parent="AbilityTargetController"]
+[node name="SingleTargetGroupFilter" type="Node" parent="AbilityTargetController"]
+script = ExtResource("3_jw0ul")
+
+[node name="EnemyTargetFilter" type="Node" parent="AbilityTargetController/SingleTargetGroupFilter"]
 script = ExtResource("3_qor4t")
 
 [node name="DamageEffect" type="Node" parent="."]
 script = ExtResource("3_i3ljx")
-amount = 10.0
+amount = 1.0
 metadata/_custom_type_script = "uid://dohwmvk8edwkg"
